@@ -1,11 +1,11 @@
 ---
 name: sarvx-email
-description: SarvX branded email system for Elias's important outbound emails. Use whenever drafting, restyling, or updating a high-stakes email from elias@sarvx.io — refund or dispute cases, client proposals and recaps, executive or partner outreach, offers, escalations, anything where the recipient should feel they are dealing with a real company. Applies the SarvX HTML design (wordmark header, red accent, callout boxes), the voice rules (casual, direct, kind but firm, value first, no em dashes), and the evidence-first structure. Trigger on "important email", "draft an email to", "reply to [vendor/client]", or any Gmail draft that is more than a two-line reply.
+description: SarvX branded email system for Seriah's important outbound emails. Use whenever drafting, restyling, or updating a high-stakes email from seriah@sarvx.io — refund or dispute cases, client proposals and recaps, executive or partner outreach, offers, escalations, anything where the recipient should feel they are dealing with a real company. Applies the SarvX HTML design (wordmark header, red accent, callout boxes), the voice rules (casual, direct, kind but firm, value first, no em dashes), and the evidence-first structure. Trigger on "important email", "draft an email to", "reply to [vendor/client]", or any Gmail draft that is more than a two-line reply.
 ---
 
 # SarvX Branded Email System
 
-Every important email from Elias goes out as a styled HTML email that reads like a
+Every important email from Seriah goes out as a styled HTML email that reads like a
 document from a real company, not a wall of text. Build it with the template in
 `template.html` (same folder) and the rules below, then deliver it as a Gmail draft
 with BOTH `htmlBody` (the styled version) and `body` (a faithful plaintext fallback).
@@ -15,7 +15,7 @@ with BOTH `htmlBody` (the styled version) and `body` (a faithful plaintext fallb
 - Disputes, refund requests, escalations (the ElliottHire case is the reference example)
 - Proposals, offers, pricing, partnership outreach
 - Client recaps and status updates that matter
-- Any email where Elias says "important", "make it nice", or the stakes are money or reputation
+- Any email where Seriah says "important", "make it nice", or the stakes are money or reputation
 
 Skip it for quick one-liners, internal team pings, and casual replies. Those stay plain,
 in his voice.
@@ -44,7 +44,7 @@ in his voice.
    bold key figures.
 6. **The Ask** in the red callout box. One box, one ask, exact dollar amounts or exact
    next step. Never bury the ask in a paragraph.
-7. **Why it matters** paragraph in plain words. Honest, no amounts Elias wants private.
+7. **Why it matters** paragraph in plain words. Honest, no amounts Seriah wants private.
 8. **The Offer** in the slate callout box: the value-first give.
 9. **Routing line + CTA**: who should handle it and the specific next step.
 10. **Signature block** (red left border): name, title, phone, email link.
@@ -68,11 +68,11 @@ in his voice.
 - Always provide the plaintext `body` fallback mirroring the HTML content exactly
   (structure it with CAPS section headers and "-" bullets).
 - Footer line outside the card: company name + one-line context, 11px `#94a3b8`.
-- Draft via the Gmail MCP (`create_draft` / `update_draft`) so Elias reviews in Gmail.
-  Sending still requires his explicit go-ahead unless he already gave it for that email.
+- Draft via the Gmail MCP (`create_draft` / `update_draft`) so Seriah reviews in Gmail.
+  Sending still requires their explicit go-ahead unless they already gave it for that email.
 
 ## Reference
 
 The canonical example is the ElliottHire refund email (thread "SarvX x ElliottHire",
-Jul 2026, elias@sarvx.io Sent folder). Match its quality bar: every claim evidenced,
+Jul 2026, seriah@sarvx.io Sent folder). Match its quality bar: every claim evidenced,
 credit before complaint, one red ask box, one slate offer box, zero em dashes.
