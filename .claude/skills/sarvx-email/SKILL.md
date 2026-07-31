@@ -47,7 +47,9 @@ in his voice.
 7. **Why it matters** paragraph in plain words. Honest, no amounts Seriah wants private.
 8. **The Offer** in the slate callout box: the value-first give.
 9. **Routing line + CTA**: who should handle it and the specific next step.
-10. **Signature block** (red left border): name, title, phone, email link.
+10. **Signature block** (red left border): name, title, company, email link. Always
+    Seriah Saracco / Chief Financial Officer / SarvX Group LLC / seriah@sarvx.io.
+    Never include a phone number. Email is the only contact method on outbound mail.
 
 ## Design tokens
 
