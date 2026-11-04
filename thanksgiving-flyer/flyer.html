@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Saracco Thanksgiving</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Great+Vibes&family=Lato:wght@400;700&family=Parisienne&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --brown: #5e260d;
+    --brown-deep: #4a1d09;
+    --cream: #f6eee0;
+    --cream-2: #efe3cf;
+    --rust: #a8461a;
+    --orange: #d9732e;
+    --gold: #c9a15e;
+    --gold-hi: #e2c483;
+    --tan: #c9a36b;
+    --ink: #3b2116;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { background: #1a0d06; }
+  .flyer {
+    position: relative; width: 1000px; height: 1560px; margin: 0 auto;
+    background: var(--brown); overflow: hidden; color: var(--ink);
+    font-family: 'Cormorant Garamond', serif;
+  }
+  /* Saraccos.com-style double gold frame */
+  .frame-outer, .frame-inner { position: absolute; border: 1.5px solid var(--gold); pointer-events: none; }
+  .frame-outer { inset: 22px; opacity: .85; }
+  .frame-inner { inset: 32px; opacity: .45; border-width: 1px; }
+  .corner-mark {
+    position: absolute; font-family: 'Cormorant Garamond', serif; font-weight: 500;
+    color: var(--gold-hi); letter-spacing: .35em; font-size: 15px;
+    background: var(--brown); padding: 0 8px 0 12px;
+  }
+  .corner-mark.tl { top: 14px; left: 50%; transform: translateX(-50%); }
+  .corner-mark.bm { bottom: 13px; left: 50%; transform: translateX(-50%); font-size: 12px; letter-spacing: .4em; }
+
+  .arch {
+    position: absolute; left: 95px; right: 95px; top: 118px; bottom: 105px;
+    background: var(--cream); border-radius: 405px 405px 0 0;
+    box-shadow: 0 0 0 4px var(--cream), 0 0 0 5.5px var(--gold);
+  }
+  .arch::before {
+    content: ""; position: absolute; inset: 14px; border: 1px solid var(--gold);
+    border-radius: 391px 391px 0 0; opacity: .7;
+  }
+  .content {
+    position: absolute; left: 95px; right: 95px; top: 178px; bottom: 105px;
+    display: flex; flex-direction: column; align-items: center; text-align: center;
+    padding: 0 70px;
+  }
+  .medallion { width: 215px; height: 215px; margin-top: -14px; }
+  .family { font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 25px; letter-spacing: .38em; margin: 14px 0 4px; text-indent: .38em; color: var(--ink); }
+  .invite { font-style: italic; font-size: 25px; color: #5a3a2a; }
+  .title { font-family: 'Great Vibes', cursive; font-size: 158px; line-height: .95; color: var(--rust); margin-top: 6px; letter-spacing: -1px; }
+  .dinner { display: flex; align-items: center; gap: 34px; margin-top: 2px; }
+  .dinner span { font-weight: 600; font-size: 44px; letter-spacing: .38em; text-indent: .38em; color: var(--ink); }
+  .dinner i { display: block; width: 90px; height: 1.5px; background: var(--gold); }
+  .flourish { width: 170px; margin: 18px 0 16px; }
+
+  .when { display: flex; align-items: center; gap: 24px; }
+  .when .side { width: 175px; border-top: 1.5px solid var(--tan); border-bottom: 1.5px solid var(--tan); padding: 12px 0; font-family: 'Lato', sans-serif; font-weight: 700; letter-spacing: .2em; font-size: 18px; color: var(--ink); }
+  .when .date { width: 136px; height: 136px; border-radius: 50%; border: 2px solid var(--gold); display: flex; flex-direction: column; align-items: center; justify-content: center; background: #fbf6ec; }
+  .date .m { font-family: 'Lato'; font-size: 15px; letter-spacing: .2em; color: #5a3a2a; }
+  .date .d { font-size: 56px; font-weight: 600; color: var(--rust); line-height: 1; margin: 2px 0; }
+  .date .y { font-family: 'Lato'; font-size: 14px; letter-spacing: .2em; color: #5a3a2a; }
+  .served { font-style: italic; font-size: 25px; color: #5a3a2a; margin-top: 14px; }
+
+  .place { font-size: 35px; font-weight: 600; margin-top: 16px; color: var(--ink); }
+  .addr { font-family: 'Lato'; font-size: 19px; letter-spacing: .08em; color: var(--ink); margin-top: 2px; }
+
+  .boxes { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 26px; width: 100%; }
+  .box { position: relative; border: 1.5px solid var(--tan); padding: 6px; }
+  .box::before, .box::after, .box .d1, .box .d2 { content: ""; position: absolute; width: 10px; height: 10px; background: var(--tan); transform: rotate(45deg); }
+  .box::before { top: -6px; left: -6px; } .box::after { top: -6px; right: -6px; }
+  .box .d1 { bottom: -6px; left: -6px; } .box .d2 { bottom: -6px; right: -6px; }
+  .box-inner { background: var(--cream-2); border: 1px solid var(--tan); padding: 16px 14px 18px; height: 100%; }
+  .box h3 { font-family: 'Lato'; font-weight: 700; font-size: 15px; letter-spacing: .3em; color: var(--rust); margin-bottom: 8px; }
+  .box p { font-size: 21.5px; line-height: 1.3; color: var(--ink); }
+  .box p b { font-weight: 600; color: var(--rust); }
+
+  .rsvp { font-size: 25px; line-height: 1.4; margin-top: 26px; color: var(--ink); }
+  .rsvp b { font-weight: 600; }
+  .phone { font-family: 'Lato'; font-weight: 700; letter-spacing: .14em; font-size: 20px; color: var(--rust); margin-top: 4px; }
+  .signoff { font-family: 'Parisienne', cursive; font-size: 42px; color: #9a6a3a; margin-top: 8px; }
+
+  svg.deco { position: absolute; overflow: visible; }
+</style>
+</head>
+<body>
+<div class="flyer" id="flyer">
+  <div class="frame-outer"></div>
+  <div class="frame-inner"></div>
+
+  <!-- shared shapes -->
+  <svg width="0" height="0" style="position:absolute">
+    <defs>
+      <g id="maple">
+        <path d="M0,-50 L9,-31 L23,-39 L19,-15 L42,-22 L32,-3 L48,6 L23,14 L28,31 L7,23 L2,48 L-2,48 L-7,23 L-28,31 L-23,14 L-48,6 L-32,-3 L-42,-22 L-19,-15 L-23,-39 L-9,-31 Z"/>
+        <path d="M0,46 L0,-44 M0,10 L36,-18 M0,10 L-36,-18 M0,22 L40,6 M0,22 L-40,6" stroke="#fff6e6" stroke-width="1.6" fill="none" opacity=".85"/>
+      </g>
+      <g id="leaf">
+        <path d="M0,-42 C24,-20 22,22 0,42 C-22,22 -24,-20 0,-42 Z"/>
+        <path d="M0,-36 L0,40" stroke="#fff6e6" stroke-width="1.4" opacity=".7"/>
+      </g>
+      <g id="wheat" fill="#e2c483" stroke="none">
+        <path d="M0,0 L0,-120" stroke="#c9a15e" stroke-width="2"/>
+        <ellipse cx="-7" cy="-30" rx="5" ry="11" transform="rotate(-25 -7 -30)"/><ellipse cx="7" cy="-42" rx="5" ry="11" transform="rotate(25 7 -42)"/>
+        <ellipse cx="-7" cy="-56" rx="5" ry="11" transform="rotate(-25 -7 -56)"/><ellipse cx="7" cy="-68" rx="5" ry="11" transform="rotate(25 7 -68)"/>
+        <ellipse cx="-7" cy="-82" rx="5" ry="11" transform="rotate(-25 -7 -82)"/><ellipse cx="7" cy="-94" rx="5" ry="11" transform="rotate(25 7 -94)"/>
+        <ellipse cx="0" cy="-118" rx="5" ry="12"/>
+      </g>
+      <g id="berries">
+        <circle cx="0" cy="0" r="7" fill="#9e2a1e"/><circle cx="12" cy="-8" r="6" fill="#b23a26"/><circle cx="-4" cy="-14" r="5.5" fill="#9e2a1e"/>
+        <circle cx="-2" cy="-2" r="2" fill="#f0c9a8" opacity=".7"/>
+      </g>
+      <g id="pumpkin">
+        <path d="M-4,-58 C-6,-70 4,-78 12,-76" stroke="#4a3220" stroke-width="7" fill="none" stroke-linecap="round"/>
+        <ellipse cx="-38" cy="0" rx="34" ry="52" fill="#c85f22" stroke="#8f3f15" stroke-width="2"/>
+        <ellipse cx="38" cy="0" rx="34" ry="52" fill="#c85f22" stroke="#8f3f15" stroke-width="2"/>
+        <ellipse cx="-16" cy="0" rx="30" ry="56" fill="#d9732e" stroke="#8f3f15" stroke-width="2"/>
+        <ellipse cx="16" cy="0" rx="30" ry="56" fill="#d9732e" stroke="#8f3f15" stroke-width="2"/>
+        <ellipse cx="0" cy="0" rx="26" ry="58" fill="#e0823a" stroke="#8f3f15" stroke-width="2"/>
+      </g>
+      <g id="gourd">
+        <path d="M0,-34 L2,-44" stroke="#4a3220" stroke-width="5" stroke-linecap="round"/>
+        <ellipse cx="-12" cy="0" rx="18" ry="32" fill="#efd39a" stroke="#b58a4a" stroke-width="1.5"/>
+        <ellipse cx="12" cy="0" rx="18" ry="32" fill="#efd39a" stroke="#b58a4a" stroke-width="1.5"/>
+        <ellipse cx="0" cy="0" rx="15" ry="34" fill="#f4dca8" stroke="#b58a4a" stroke-width="1.5"/>
+      </g>
+      <!-- top-left corner cluster (mirrored for right) -->
+      <g id="cornerTop">
+        <use href="#wheat" transform="translate(150,90) rotate(-62) scale(1.05)"/>
+        <use href="#wheat" transform="translate(70,150) rotate(160) scale(.95)"/>
+        <use href="#leaf" fill="#e2b062" transform="translate(42,240) rotate(-15) scale(.75)"/>
+        <use href="#leaf" fill="#efc87a" transform="translate(250,60) rotate(70) scale(.6)"/>
+        <use href="#maple" fill="#c9a36b" transform="translate(60,170) rotate(-20) scale(.85)"/>
+        <use href="#leaf" fill="#c2541c" transform="translate(150,160) rotate(-40) scale(.95)"/>
+        <use href="#berries" transform="translate(132,128)"/>
+        <use href="#maple" fill="#e9a640" transform="translate(185,60) rotate(18) scale(.95)"/>
+        <use href="#maple" fill="#d9692a" transform="translate(85,80) rotate(-10) scale(1.35)"/>
+      </g>
+      <g id="cornerBottom">
+        <use href="#wheat" transform="translate(205,30) rotate(35) scale(.9)"/>
+        <use href="#maple" fill="#e9a640" transform="translate(30,40) rotate(-15) scale(1)"/>
+        <use href="#pumpkin" transform="translate(115,110) scale(1.05)"/>
+        <use href="#leaf" fill="#c9a36b" transform="translate(220,80) rotate(60) scale(.8)"/>
+        <use href="#gourd" transform="translate(205,140) scale(1.05)"/>
+      </g>
+    </defs>
+  </svg>
+
+  <!-- corner decorations -->
+  <svg class="deco" style="left:0;top:0" width="320" height="320"><use href="#cornerTop"/></svg>
+  <svg class="deco" style="right:0;top:0" width="320" height="320"><use href="#cornerTop" transform="translate(320,0) scale(-1,1)"/></svg>
+
+  <div class="arch"></div>
+  <span class="corner-mark tl">SS</span>
+  <svg class="deco" style="left:0;bottom:-18px" width="300" height="200"><use href="#cornerBottom"/></svg>
+  <svg class="deco" style="right:0;bottom:-18px" width="300" height="200"><use href="#cornerBottom" transform="translate(300,0) scale(-1,1)"/></svg>
+  <span class="corner-mark bm">SARACCOS · MMXXVI</span>
+
+  <div class="content">
+    <!-- SS monogram medallion -->
+    <svg class="medallion" viewBox="-100 -100 200 200">
+      <g id="petals">
+        <g fill="#a8461a">
+          <path d="M0,-92 C7,-82 6,-74 0,-68 C-6,-74 -7,-82 0,-92Z" transform="rotate(0)"/>
+          <path d="M0,-92 C7,-82 6,-74 0,-68 C-6,-74 -7,-82 0,-92Z" transform="rotate(45)"/>
+          <path d="M0,-92 C7,-82 6,-74 0,-68 C-6,-74 -7,-82 0,-92Z" transform="rotate(90)"/>
+          <path d="M0,-92 C7,-82 6,-74 0,-68 C-6,-74 -7,-82 0,-92Z" transform="rotate(135)"/>
+          <path d="M0,-92 C7,-82 6,-74 0,-68 C-6,-74 -7,-82 0,-92Z" transform="rotate(180)"/>
+          <path d="M0,-92 C7,-82 6,-74 0,-68 C-6,-74 -7,-82 0,-92Z" transform="rotate(225)"/>
+          <path d="M0,-92 C7,-82 6,-74 0,-68 C-6,-74 -7,-82 0,-92Z" transform="rotate(270)"/>
+          <path d="M0,-92 C7,-82 6,-74 0,-68 C-6,-74 -7,-82 0,-92Z" transform="rotate(315)"/>
+        </g>
+        <g fill="#c9a15e">
+          <ellipse cx="0" cy="-76" rx="5" ry="9" transform="rotate(22.5)"/>
+          <ellipse cx="0" cy="-76" rx="5" ry="9" transform="rotate(67.5)"/>
+          <ellipse cx="0" cy="-76" rx="5" ry="9" transform="rotate(112.5)"/>
+          <ellipse cx="0" cy="-76" rx="5" ry="9" transform="rotate(157.5)"/>
+          <ellipse cx="0" cy="-76" rx="5" ry="9" transform="rotate(202.5)"/>
+          <ellipse cx="0" cy="-76" rx="5" ry="9" transform="rotate(247.5)"/>
+          <ellipse cx="0" cy="-76" rx="5" ry="9" transform="rotate(292.5)"/>
+          <ellipse cx="0" cy="-76" rx="5" ry="9" transform="rotate(337.5)"/>
+        </g>
+      </g>
+      <circle r="60" fill="#fbf6ec" stroke="#c9a15e" stroke-width="2.5"/>
+      <circle r="53" fill="none" stroke="#c9a15e" stroke-width="1" opacity=".7"/>
+      <!-- interlocked SS -->
+      <text x="-14" y="27" text-anchor="middle" font-family="Cormorant Garamond" font-style="italic" font-weight="500" font-size="88" fill="#a8461a">S</text>
+      <text x="14" y="27" text-anchor="middle" font-family="Cormorant Garamond" font-style="italic" font-weight="500" font-size="88" fill="#b8873e" opacity=".95">S</text>
+    </svg>
+
+    <div class="family">THE SARACCO FAMILY</div>
+    <div class="invite">invites you to an evening of gratitude &amp; feasting</div>
+    <div class="title">Thanksgiving</div>
+    <div class="dinner"><i></i><span>DINNER</span><i></i></div>
+
+    <svg class="flourish" viewBox="0 0 170 16"><path d="M2,8 H55 M115,8 H168" stroke="#c9a15e" stroke-width="1.2"/><path d="M55,8 C62,0 70,0 72,8 C70,14 64,12 66,8 M115,8 C108,0 100,0 98,8 C100,14 106,12 104,8" stroke="#c9a15e" stroke-width="1.2" fill="none"/><path d="M85,2 L91,8 L85,14 L79,8 Z" fill="#c9a15e"/></svg>
+
+    <div class="when">
+      <div class="side">THURSDAY</div>
+      <div class="date"><span class="m">NOV</span><span class="d">26</span><span class="y">2026</span></div>
+      <div class="side">4:00 PM</div>
+    </div>
+    <div class="served">Dinner will be served at four o’clock</div>
+
+    <div class="place">The Saracco Residence</div>
+    <div class="addr">1173 Teal Hollow Dr · Yuba City, CA</div>
+
+    <div class="boxes">
+      <div class="box"><span class="d1"></span><span class="d2"></span><div class="box-inner">
+        <h3>POTLUCK STYLE</h3>
+        <p>The turkey is on us! Please bring your favorite side, dessert or drink to share.</p>
+      </div></div>
+      <div class="box"><span class="d1"></span><span class="d2"></span><div class="box-inner">
+        <h3>GAME NIGHT</h3>
+        <p>Stay after dinner for a series of games. Every round earns points, and the overall winner takes home <b>the grand prize!</b></p>
+      </div></div>
+    </div>
+
+    <div class="rsvp">Kindly RSVP to <b>Seriah</b><br>and let her know what dish you’ll be bringing.</div>
+    <div class="phone">(XXX) XXX-XXXX</div>
+    <div class="signoff">Gather, give thanks &amp; enjoy</div>
+  </div>
+</div>
+</body>
+</html>
